@@ -1,0 +1,28 @@
+// 350. Intersection of two Arrays II 
+
+
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        Arrays.sort(nums1);// sort the array
+        Arrays.sort(nums2);// sort the array
+        ArrayList<Integer> arr=new ArrayList<>();
+        boolean [] flag=new boolean[nums2.length];// flag to check is it visited or not
+        for(int i=0;i<nums1.length;i++){
+            for(int j=0;i<nums1.length&& j<nums2.length;j++){
+                if(nums1[i]==nums2[j] && flag[j]==false){// check it is equal and not visited before
+                    arr.add(nums1[i]);
+                    flag[j]=true;
+                    i++;
+                    continue;
+                }
+            }
+        }
+        int[] ans=new int[arr.size()];
+        int k=0;
+        for(int i: arr){
+            ans[k]=i;
+            k++;
+        }
+        return ans;
+    }
+}
