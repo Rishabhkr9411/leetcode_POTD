@@ -1,0 +1,17 @@
+class Solution {
+    public double averageWaitingTime(int[][] customers) {
+        double total=0;
+        int curr_time=0;
+        for(int []ar: customers){
+            int start=ar[0];
+            int prep=ar[1];
+            if(curr_time<=start) {
+                curr_time=start;
+            }
+            curr_time+=prep;
+            total+=curr_time-start;
+        }
+        return total/customers.length;
+
+    }
+}
